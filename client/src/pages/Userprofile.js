@@ -74,14 +74,12 @@ const Userprofile = () => {
                 <hr />
                 <Wrapper>
                     <Work><h1>Work</h1>{apiData && apiData.status}</Work>
-                    <Work><h1>Website</h1>{apiData && apiData.website}</Work>
+                    <Work><h1>Website</h1>{apiData && apiData && apiData.website !== "" ? apiData.website : 'No Website'}</Work>
                 </Wrapper>
             </Userdata>
             <PostWrapper>
                 <Data>
-                    <li> <i className="fas fa-city"></i> &nbsp;{ } Post Published</li>
-                    <li> <i className="far fa-comment"></i> &nbsp; Comments Written</li>
-                    <li> <i className="fas fa-hashtag"></i> &nbsp; Tags Followed</li>
+                    <li> <i className="fas fa-city"></i> &nbsp;{ } Post Published ({blogpost && blogpost.length})</li>
                 </Data>
                 <PostContainer>
                     {

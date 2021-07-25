@@ -70,9 +70,9 @@ const Settings = () => {
                                 <SettingBox>
                                     <h1>User</h1>
                                     <label>Name</label>
-                                    <input type="text" placeholder="John Doe" onChange={e => setName(e.target.value)} />
+                                    <input type="text" placeholder="John Doe" onChange={e => setName(e.target.value)} required />
                                     <label>Email</label>
-                                    <input type="email" placeholder="john.doe@example.com" onChange={e => setEmail(e.target.value)} />
+                                    <input type="email" placeholder="john.doe@example.com" onChange={e => setEmail(e.target.value)} required />
                                     <label>Company</label>
                                     <input type="text" placeholder="abc.com" onChange={e => setCompany(e.target.value)} />
                                 </SettingBox>
@@ -83,11 +83,11 @@ const Settings = () => {
                                     <label>Location</label>
                                     <input type="text" placeholder="halifax, Nova Prime" onChange={e => setLocation(e.target.value)} />
                                     <label>Bio</label>
-                                    <input type="text" placeholder="A short bio..." onChange={e => setBio(e.target.value)} />
+                                    <input type="text" placeholder="A short bio..." onChange={e => setBio(e.target.value)} required />
                                     <label>Status</label>
-                                    <input type="text" placeholder="Status" onChange={e => setStatus(e.target.value)} />
+                                    <input type="text" placeholder="Status" onChange={e => setStatus(e.target.value)} required />
                                     <label>Skills</label>
-                                    <input type="text" placeholder="Javascript, Python..." onChange={e => setSkills(e.target.value)} />
+                                    <input type="text" placeholder="Javascript, Python..." onChange={e => setSkills(e.target.value)} required />
                                 </SettingBox>
                                 <SettingBox>
                                     <h1>Education</h1>
@@ -244,7 +244,12 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `
 
 export default Settings

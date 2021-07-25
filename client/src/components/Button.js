@@ -16,7 +16,6 @@ const Btn = styled.button`
         outline: none;
         color: #fff;
         font-family: inherit;
-        margin: 0 2rem;
         cursor: pointer;
 
          &:hover {

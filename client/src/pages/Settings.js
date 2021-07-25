@@ -61,12 +61,6 @@ const Settings = () => {
         <Home>
             {
                 state ? <Container>
-                    <Left>
-                        <SideNav>
-                            <li>😎 Profile</li>
-                            <li>⚙ Customization</li>
-                        </SideNav>
-                    </Left>
                     <Middle>
                         <FilterOption>
                             {/* <h1>Settings for <Link to="/user/mukulrajpoot">@{user.name.replace(' ', '').toLowerCase()}</Link></h1> */}
@@ -146,15 +140,6 @@ const Container = styled.div`
     display: flex;
 `
 
-const Left = styled.div`
-    padding: .5rem;
-    flex: 1.5;
-    min-height: 100vh;
-
-    @media (max-width: 768px) {
-        display: none;
-    }
-    `
 const Middle = styled.div`
     padding: .5rem;
     min-height: 100vh;
@@ -162,9 +147,10 @@ const Middle = styled.div`
 
     @media (max-width: 1024px) {
         padding: 2rem;
+        width: 100%;
         margin: 0 auto;
     }
-    `
+`
 
 const FilterOption = styled.div`
     height: max-content;
@@ -258,8 +244,7 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 80%;
-    margin: 2rem 0;
+    width: 100%;
 `
 
 export default Settings

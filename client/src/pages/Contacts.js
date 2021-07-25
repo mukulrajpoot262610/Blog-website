@@ -65,7 +65,7 @@ const Box = styled.div`
     position: relative;
 
     @media (max-width: 768px) {
-        width: 80%;
+        width: 90%;
     }
 
     & > h1 {
@@ -81,6 +81,10 @@ const Box = styled.div`
             color: royalblue;
             font-weight: 600;
             font-size: 2.5rem;
+
+            @media (max-width: 768px) {
+            font-size: 2rem;
+            }
         }
     }
 

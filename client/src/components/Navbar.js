@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Button from './Button'
@@ -16,14 +16,47 @@ const Navbar = () => {
         history.pushState('/')
     }
 
+    const [toggle, SetToggle] = useState(false)
+
+    useEffect(() => {
+        return history.listen((location) => {
+            SetToggle(false)
+        })
+    }, [history])
+
+    const handleNav = () => {
+        SetToggle(!toggle)
+    }
+
+    console.log(toggle)
+
     return (
         <Nav>
             <Container>
                 <Logo>
+                    <div onClick={handleNav}>
+                        <i className="fas fa-bars"></i>
+                    </div>
                     <Link to="/">
                         <img src="/images/logo.png" alt="Logo" />
                     </Link>
                 </Logo>
+                {
+                    toggle && <SideNav>
+                        <Link to="/">
+                            <li>🏡 Home</li>
+                        </Link>
+                        <Link to="/about">
+                            <li>🐒 About</li>
+                        </Link>
+                        <Link to="/">
+                            <li> 👀 Terms of use</li>
+                        </Link>
+                        <Link to='/contacts'>
+                            <li>📞 Contact</li>
+                        </Link>
+                    </SideNav>
+                }
                 {
                     user[0] ? (<CreatePost>
                         <Link to="/new">
@@ -76,6 +109,7 @@ const Nav = styled.nav`
 `
 
 const Container = styled.div`
+    position: relative;
     max-width: 1280px;
     width: 100%;
     height: 100%;
@@ -85,10 +119,53 @@ const Container = styled.div`
     align-items: center;
 `
 
+const SideNav = styled.ul`
+    position: absolute;
+    top: 100%;
+    width: 40%;
+    height: 100vh;
+    border-radius: .5rem;
+    padding: 1.5rem 0;
+    background-color: #fff;
+
+    & > a {
+        text-decoration: none;
+        color: #191919;
+    }
+
+    & > a > li {
+        list-style: none;
+        width: 100%;
+        padding: 1rem 2rem;
+        border-radius: .5rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(0,0,0,0.1);
+            color: #3B49D2;
+        }
+    }
+`
+
 const Logo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & > div {
+        margin-left: 2rem;
+        display: none;
+
+        @media (max-width:768px) {
+            display: block;
+        }
+    }
+
+    & > div > i {
+        font-size: 3rem;
+        cursor: pointer;
+    }
 
     & > a > img {
         height: 5vh;

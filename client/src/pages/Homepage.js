@@ -127,7 +127,8 @@ const Left = styled.div`
     @media (max-width: 768px) {
         display: none;
     }
-    `
+`
+
 const Middle = styled.div`
     padding: .5rem;
     min-height: 100vh;

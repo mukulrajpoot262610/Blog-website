@@ -67,7 +67,7 @@ const Box = styled.div`
     position: relative;
 
     @media (max-width: 768px) {
-        width: 80%;
+        width: 90%;
     }
 
     & > h1 {
@@ -94,6 +94,8 @@ const Box = styled.div`
     & > img {
         border-radius: 0.5rem;
         margin: 2rem 0;
+        width: 100%;
+        height: auto;
     }
 `
 

@@ -28,7 +28,6 @@ app.use("/api/profile", require('./routes/profile'))
 if (node_env === 'production') {
     app.use(express.static(path.join(__dirname, '/client/build')))
 
-    console.log('Wortks')
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })

@@ -133,7 +133,7 @@ const Userdata = styled.div`
     width: 100%;
     height: max-content;
     border-radius: .5rem;
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     background: #fff;
     display: flex;
@@ -145,8 +145,8 @@ const Userdata = styled.div`
         width: 10vh;
         border-radius: 50%;
         border: 1rem solid #191919;
-        position: absolute;
-        top: -15%;
+        position: fixed;
+        top: 7.5%;
     }
 
     @media (max-width: 768px) {

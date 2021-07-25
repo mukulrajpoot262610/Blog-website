@@ -5,12 +5,13 @@ const auth = require('../middleware/auth')
 const User = require('../models/User')
 const Blogs = require('../models/Blogs')
 const multer = require('multer');
+const path = require('path');
 const Profile = require('../models/Profile')
 const { v4: uuidv4 } = require('uuid');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../client/public/uploads/');
+        cb(null, './client/build/uploads');
     },
     filename: function (req, file, cb) {
         cb(null, uuidv4());

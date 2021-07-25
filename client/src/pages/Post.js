@@ -308,9 +308,12 @@ const Left = styled.div`
     min-height: 100vh;
 
     @media (max-width: 768px) {
-        display: none;
+        height: max-content;
+        flex: 0;
+        padding: 0;
     }
-    `
+`
+
 const Middle = styled.div`
     padding: .5rem;
     min-height: 100vh;
@@ -369,6 +372,15 @@ const SideNav = styled.ul`
     border-radius: .5rem;
     padding: 1.5rem 0;
 
+    @media (max-width: 768px) {
+        background: #fff;
+        padding: 0;
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
     & > li {
         display: flex;
         flex-direction: column;
@@ -395,6 +407,7 @@ const SideNav = styled.ul`
 
 const Discussion = styled.div`
     margin: 2rem 0;
+    margin-bottom: 10rem;
 `
 
 const Field = styled.div`

@@ -80,11 +80,11 @@ const Login = () => {
                 <Box>
                     <h1>Welcome to DEV Community</h1>
                     <h3>DEV Community is a community of 653,167 amazing developers</h3>
-                    <Signin>
+                    {/* <Signin>
                         <button className="create"> <i className="fab fa-github"></i> &nbsp; Continue with GitHub</button>
                         <button className="create"><i className="fab fa-google"></i> &nbsp; Continue with Google</button>
-                    </Signin>
-                    <h2>Have a password? Continue with your email address</h2>
+                    </Signin> */}
+                    {/* <h2>Have a password? Continue with your email address</h2> */}
                     <Form onSubmit={handleSubmit}>
                         <label>Email</label>
                         <input type="email" onChange={e => setEmail(e.target.value)} />
@@ -141,14 +141,15 @@ const Box = styled.div`
     margin: 0rem auto;
     width: 50%;
     height: max-content;
-    padding: 2rem;
+    padding: 3rem 2rem;
+    background-color: #fff;
     border-radius: .5rem;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     text-align: center;
     position: relative;
 
     @media (max-width: 768px) {
-        width: 80%;
+        width: 90%;
     }
 
     & > h1 {
@@ -157,7 +158,6 @@ const Box = styled.div`
 
     & > h2 {
         font-weight: 300;
-        background-color: #EEF0F1;
     }
 `
 

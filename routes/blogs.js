@@ -240,30 +240,37 @@ router.post('/comments/:id', [auth, [
     }
 })
 
-// // @route  DELETE api/blogs/comments/:id/:comments_id
-// // @desc   Delete Comments
-// // @access Private
-// router.delete('/comments/:id/:comment_id', auth, async (req, res) => {
+// @route  DELETE api/blogs/comments/:id/:comments_id
+// @desc   Delete Comments
+// @access Private
+router.delete('/comments/:id/:comment_id', auth, async (req, res) => {
 
-//     try {
-//         const post = await Blogs.findById(req.params.id);
+    try {
+        const post = await Blogs.findById(req.params.id);
 
-//         const comment = post.comments.find(comment => comment.id === req.params.comment_id)
+        const comment = post.comments.find(comment => comment.id === req.params.comment_id)
 
-//         if (!comment) {
-//             return res.status(404).json({ errors: [{ msg: 'Comment Does"t Exist' }] })
-//         }
+        if (!comment) {
+            return res.status(404).json({ errors: [{ msg: 'Comment Doesn\'t Exist' }] })
+        }
 
-//         if (comment.user.toString() !== req.user.id) {
-//             return res.status(401).
-//         }
+        if (comment.user.toString() !== req.user.id) {
+            return res.status(401).json({ errors: [{ msg: 'User not Authorized' }] })
+        }
 
-//         res.json(post.comments)
+        // Get Remove index
+        const removeIndex = post.comments.map(comment => comment.user.toString()).indexOf(req.user.id)
 
-//     } catch (err) {
-//         console.log(err.message)
-//         res.status(500).send('Server Error')
-//     }
-// })
+        post.comments.splice(removeIndex, 1)
+
+        await post.save()
+
+        res.json(post.comments)
+
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server Error')
+    }
+})
 
 module.exports = router

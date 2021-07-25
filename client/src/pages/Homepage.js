@@ -64,27 +64,26 @@ const Homepage = () => {
                         <Link to='/contacts'>
                             <li>📞 Contact</li>
                         </Link>
-                    </SideNav>
-                    <Socials>
+                        <h1>Social</h1>
                         <a href="https://www.linkedin.com/in/mukul-rajpoot-262610/">
-                            <i className="fab fa-linkedin-in"></i>
+                            <li><i className="fab fa-linkedin-in"></i>&nbsp; LinkedIn</li>
                         </a>
                         <a href="https://github.com/mukulrajpoot262610">
-                            <i className="fab fa-github"></i>
+                            <li><i className="fab fa-github"></i>&nbsp; GitHub</li>
                         </a>
                         <a href="mailto: mukulrajpoot262610@gmail.com">
-                            <i className="fas fa-envelope"></i>
+                            <li><i className="fas fa-envelope"></i>&nbsp; Mail</li>
                         </a>
-                    </Socials>
+                    </SideNav>
                 </Left>
                 <Middle>
                     <FilterOption>
                         <h1>Posts</h1>
-                        <Filters>
+                        {/* <Filters>
                             <li>Feed</li>
                             <li>Month</li>
                             <li>Latest</li>
-                        </Filters>
+                        </Filters> */}
                     </FilterOption>
                     <Posts>
                         {
@@ -251,6 +250,10 @@ const SideNav = styled.ul`
     border-radius: .5rem;
     padding: 1.5rem 0;
 
+    & > h1 {
+        margin: 2rem 0;
+    }
+
     & > a {
         text-decoration: none;
         color: #191919;
@@ -266,25 +269,6 @@ const SideNav = styled.ul`
 
         &:hover {
             background-color: rgba(0,0,0,0.1);
-            color: #3B49D2;
-        }
-    }
-`
-
-const Socials = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 4rem;
-    margin: 2rem 0;
-
-    & > a {
-        color: #191919;
-    }
-
-    & > a > i {
-        cursor: pointer;
-        &:hover {
             color: #3B49D2;
         }
     }

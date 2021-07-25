@@ -26,12 +26,12 @@ const PostCover = ({ data }) => {
                     <Link to={`/post/${_id}`}>
                         <h1>{title}</h1>
                     </Link>
-                    <Tags>
+                    {/* <Tags>
                         <h2>#Web dev</h2>
                         <h2>#Web dev</h2>
                         <h2>#Web dev</h2>
                         <h2>#Web dev</h2>
-                    </Tags>
+                    </Tags> */}
                 </Topic>
                 <Interact>
                     <LikeComment>
@@ -48,9 +48,6 @@ const PostCover = ({ data }) => {
                             </Comment>
                         </Link>
                     </LikeComment>
-                    <Save>
-                        Save
-                    </Save>
                 </Interact>
             </Data>
         </Box>

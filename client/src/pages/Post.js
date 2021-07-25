@@ -13,8 +13,9 @@ const Post = () => {
     const [postData, setPostData] = useState()
     const [like, setLike] = useState()
     const [profileData, setProfileData] = useState()
-    const [comments, setComments] = useState()
+    const [comments, setComments] = useState("")
     const [commentData, setCommentData] = useState()
+    const [del, setDel] = useState()
 
     const history = useHistory()
     const { id } = useParams()
@@ -57,7 +58,7 @@ const Post = () => {
             }
         }
         fetchData()
-    }, [])
+    }, [del])
 
     const handleLike = async () => {
         const res = await fetch(`/api/blogs/like/${id}`, {
@@ -90,16 +91,12 @@ const Post = () => {
 
             if (resUnlike.status === 200) {
                 setLike(dataUnlike)
-                // console.log(dataUnlike)
             } else {
                 alert('Please Sign-in First')
                 history.push('/enter')
             }
         }
     }
-
-    // console.log(commentData)
-    // console.log(comments)
 
     const handleComments = async (e) => {
         e.preventDefault()
@@ -120,17 +117,18 @@ const Post = () => {
         const dataComment = await resComment.json()
 
         if (resComment.status === 200) {
+            setComments("")
             setCommentData(dataComment)
-            setComments('')
-        } else {
+        } else if (resComment.status === 401) {
             alert('Please Sign-in First')
             history.push('/enter')
+        } else {
+            alert('Text is Required')
         }
 
         setComments('')
     }
 
-    // console.log(postData)
 
     return (
         <Home>
@@ -141,7 +139,7 @@ const Post = () => {
                             like && like.filter(u => (user && user._id) === u.user).length > 0 ? (<><i className="fas fa-heart" style={{ color: 'crimson' }}></i> <span>{like && like.length}</span></>) : (<><i className="far fa-heart" style={{ color: 'crimson' }}></i><span>{like && like.length}</span></>)
                         }</li>
 
-                        <li title="Save">📝</li>
+                        <li title="Comment">📝<span>{commentData && commentData.length}</span></li>
                         <li title="Share">🏹</li>
                     </SideNav>
                 </Left>
@@ -160,20 +158,20 @@ const Post = () => {
                         </PostData>
                     </Posts>
                     <hr />
-                    <Discussion>
+                    <Discussion id='#com'>
                         <h1>Discussion ({commentData && commentData.length}) </h1>
                         <Field>
                             {
                                 auth ? <img src={user && user.avatar} alt="" /> : <img src="/images/logo.png" alt="" />
                             }
                             <form onSubmit={handleComments}>
-                                <textarea placeholder="Write your Amazing Words..." onChange={(e) => setComments(e.target.value)}></textarea>
+                                <textarea placeholder="Write your Amazing Words..." onChange={(e) => setComments(e.target.value)} value={comments} required></textarea>
                                 <button className="create">Submit</button>
                             </form>
                         </Field>
                         <Panel>
                             {
-                                commentData && commentData.map((e) => <Comment data={e} key={e._id} />)
+                                commentData && commentData.map((e) => <Comment setDel={setDel} post_id={id} data={e} key={e._id} />)
 
                             }
                         </Panel>

@@ -28,7 +28,7 @@ const Navbar = () => {
         SetToggle(!toggle)
     }
 
-    console.log(toggle)
+    // console.log(toggle)
 
     return (
         <Nav>
@@ -42,7 +42,7 @@ const Navbar = () => {
                     </Link>
                 </Logo>
                 {
-                    toggle && <SideNav>
+                    toggle && <><SideNav>
                         <Link to="/">
                             <li>🏡 Home</li>
                         </Link>
@@ -55,15 +55,27 @@ const Navbar = () => {
                         <Link to='/contacts'>
                             <li>📞 Contact</li>
                         </Link>
+                        <h1>Social</h1>
+                        <a href="https://www.linkedin.com/in/mukul-rajpoot-262610/">
+                            <li><i className="fab fa-linkedin-in"></i>&nbsp; LinkedIn</li>
+                        </a>
+                        <a href="https://github.com/mukulrajpoot262610">
+                            <li><i className="fab fa-github"></i>&nbsp; GitHub</li>
+                        </a>
                     </SideNav>
+                    </>
                 }
                 {
                     user[0] ? (<CreatePost>
                         <Link to="/new">
                             <Button text="Create Post" />
                         </Link>
-                        <i className="far fa-comment-dots"></i>
-                        <i className="far fa-bell"></i>
+                        <Link to="/soon">
+                            <i className="far fa-comment-dots"></i>
+                        </Link>
+                        <Link to="/soon">
+                            <i className="far fa-bell"></i>
+                        </Link>
                         <img src={user[0].avatar} alt="/" />
                         <Dropdown>
                             <Link to="/user">
@@ -127,6 +139,13 @@ const SideNav = styled.ul`
     border-radius: .5rem;
     padding: 1.5rem 0;
     background-color: #fff;
+    font-size: 2rem;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+
+    & > h1 {
+        margin: 2rem 0;
+        margin-left: 2rem;
+    }
 
     & > a {
         text-decoration: none;
@@ -138,7 +157,7 @@ const SideNav = styled.ul`
         width: 100%;
         padding: 1rem 2rem;
         border-radius: .5rem;
-        font-size: 1.5rem;
+        font-size: 2rem;
         cursor: pointer;
 
         &:hover {
@@ -284,7 +303,7 @@ const CreatePost = styled.div`
         }
     }
 
-    & > i {
+    & > a > i {
         font-size: 2.5rem;
         padding: 1rem;
 

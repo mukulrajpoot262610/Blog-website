@@ -73,8 +73,8 @@ const Userprofile = () => {
                 </Joined>
                 <hr />
                 <Wrapper>
-                    <Work><h1>Work</h1>{apiData && apiData.status}</Work>
-                    <Work><h1>Website</h1>{apiData && apiData && apiData.website !== "" ? apiData.website : 'No Website'}</Work>
+                    <Work><h1>Work</h1>{apiData ? apiData.status : '--'}</Work>
+                    <Work><h1>Website</h1>{apiData ? apiData.website : '--'}</Work>
                 </Wrapper>
             </Userdata>
             <PostWrapper>

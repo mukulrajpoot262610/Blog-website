@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { setCurrentUser, setAuth } from './store/store'
 import About from './pages/About';
 import Contacts from './pages/Contacts';
+import Soon from './pages/Soon';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
         <Route exact path='/register' component={Signup} />
         <Route exact path='/about' component={About} />
         <Route exact path='/contacts' component={Contacts} />
+        <Route exact path='/soon' component={Soon} />
         <Route exact path='/user'>
           {state ? <Userprofile /> : <Login />}
         </Route>

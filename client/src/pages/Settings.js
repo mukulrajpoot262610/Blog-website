@@ -175,25 +175,25 @@ const Posts = styled.div`
     width: 100%;
 `
 
-const SideNav = styled.ul`
-    height: max-content;
-    border-radius: .5rem;
-    padding: 1.5rem 0;
+// const SideNav = styled.ul`
+//     height: max-content;
+//     border-radius: .5rem;
+//     padding: 1.5rem 0;
 
-    & > li {
-        list-style: none;
-        width: 100%;
-        padding: 1rem 2rem;
-        border-radius: .5rem;
-        font-size: 1.5rem;
-        cursor: pointer;
+//     & > li {
+//         list-style: none;
+//         width: 100%;
+//         padding: 1rem 2rem;
+//         border-radius: .5rem;
+//         font-size: 1.5rem;
+//         cursor: pointer;
 
-        &:hover {
-            background-color: rgba(0,0,0,0.1);
-            color: #3B49D2;
-        }
-    }
-`
+//         &:hover {
+//             background-color: rgba(0,0,0,0.1);
+//             color: #3B49D2;
+//         }
+//     }
+// `
 
 const SettingBox = styled.div`
     margin-bottom: 2rem;

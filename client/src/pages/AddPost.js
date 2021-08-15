@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom'
-import axios from 'axios';
+import storage from '../Firebase.config'
 
 const AddPost = () => {
 
@@ -14,25 +14,55 @@ const AddPost = () => {
         setFileName(e.target.files[0])
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
 
-        const formData = new FormData();
-        formData.append('postImage', fileName);
-        formData.append('text', post);
-        formData.append('title', title);
-
-        const headers = {
-            'Content-Type': 'application/json',
-            'x-auth-token': localStorage.getItem('TOKEN'),
+    const UploadToMongoDB = async (url) => {
+        const formData = {
+            text: post,
+            title: title,
+            postImage: url
         }
 
-        axios.post('/api/blogs', formData, {
-            headers: headers
-        }).then(res => {
+        const res = await fetch('/api/blogs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': localStorage.getItem('TOKEN'),
+            },
+            body: JSON.stringify(formData)
+        })
+
+        // const data = await res.json()
+
+        if (res.status === 400) {
+            alert('Error')
+        } else {
+            alert('Success')
             history.push('/')
-        }).catch(err => {
-        });
+        }
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        upload([
+            { file: fileName, label: 'postImage' }
+        ])
+    }
+
+    const upload = (items) => {
+        items.forEach(item => {
+            const filename = new Date().getTime() + item.file.name;
+            const uploadTask = storage.ref(`/items/${filename}`).put(item.file)
+
+            uploadTask.on('state_changed', (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                alert('Uploading')
+            }, (err) => { console.log(err) }, () => {
+                uploadTask.snapshot.ref.getDownloadURL().then(url => {
+                    UploadToMongoDB(url)
+                })
+            })
+        })
     }
 
     return (
@@ -44,10 +74,6 @@ const AddPost = () => {
                     </SideNav>
                 </Left>
                 <Middle>
-                    <FilterOption>
-                        <h1>Edit</h1>
-                        <h1>Preview</h1>
-                    </FilterOption>
                     <Form onSubmit={handleSubmit} encType='multipart/form-data'>
                         <input
                             type="file"

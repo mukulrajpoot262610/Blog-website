@@ -28,8 +28,6 @@ const Navbar = () => {
         SetToggle(!toggle)
     }
 
-    // console.log(toggle)
-
     return (
         <Nav>
             <Container>

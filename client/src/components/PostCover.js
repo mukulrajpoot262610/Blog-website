@@ -12,7 +12,7 @@ const PostCover = ({ data }) => {
     return (
         <Box>
             <Link to={`/post/${_id}`}>
-                <img src={`/uploads/${postImage}`} alt="" />
+                <img src={postImage} alt="" />
             </Link>
             <Data>
                 <UserProfile>
@@ -60,6 +60,7 @@ const Box = styled.div`
     height: max-content;
     border-radius: .5rem;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    background-color: #fff;
 
     & > a {
         text-decoration: none;
@@ -107,16 +108,16 @@ const Topic = styled.div`
     }
 `
 
-const Tags = styled.div`
-    margin: 1rem 0;
-    display: flex;
+// const Tags = styled.div`
+//     margin: 1rem 0;
+//     display: flex;
 
-    & > h2 {
-        margin: 0 0.5rem;
-        font-weight: 400;
-        color: rgba(0,0,0,0.5);
-    }
-`
+//     & > h2 {
+//         margin: 0 0.5rem;
+//         font-weight: 400;
+//         color: rgba(0,0,0,0.5);
+//     }
+// `
 
 const Interact = styled.div`
     display: flex;
@@ -166,12 +167,12 @@ const Like = styled.div`
         margin: 0 .5rem;
     }
 `
-const Save = styled.div`
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background: rgba(0,0,0,0.2);
-    font-size: 1.3rem;
-    cursor: pointer;
-`
+// const Save = styled.div`
+//     padding: 1rem;
+//     border-radius: 0.5rem;
+//     background: rgba(0,0,0,0.2);
+//     font-size: 1.3rem;
+//     cursor: pointer;
+// `
 
 export default PostCover

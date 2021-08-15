@@ -221,28 +221,28 @@ const FilterOption = styled.div`
     align-items: center;
 `
 
-const Filters = styled.ul`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+// const Filters = styled.ul`
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
 
-    & > li {
-        list-style: none;
-        font-size: 1.5rem;
-        padding: .5rem 1rem;
-        border-radius: .5rem;
+//     & > li {
+//         list-style: none;
+//         font-size: 1.5rem;
+//         padding: .5rem 1rem;
+//         border-radius: .5rem;
 
-        &:hover {
-            background: rgba(59,73,210, 0.2);
-            padding: .5rem 1rem;
-        }
-    }
-`
+//         &:hover {
+//             background: rgba(59,73,210, 0.2);
+//             padding: .5rem 1rem;
+//         }
+//     }
+// `
 
 const Posts = styled.div`
     min-height: 100vh;
     width: 100%;
-    background-color: #fff;
+    background-color: #EEF0F1;
 `
 
 const SideNav = styled.ul`

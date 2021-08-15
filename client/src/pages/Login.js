@@ -161,27 +161,27 @@ const Box = styled.div`
     }
 `
 
-const Signin = styled.div`
-    margin: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+// const Signin = styled.div`
+//     margin: 1rem 0;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
 
-    & > .create {
-        font-size: 1.5rem;
-        border: none;
-        background: #191919;
-        padding: 1rem;
-        border-radius: .5rem;
-        outline: none;
-        color: #fff;
-        font-family: inherit;
-        margin: 1rem 1rem;
-        width: 80%;
-        cursor: pointer;
-    }
-`
+//     & > .create {
+//         font-size: 1.5rem;
+//         border: none;
+//         background: #191919;
+//         padding: 1rem;
+//         border-radius: .5rem;
+//         outline: none;
+//         color: #fff;
+//         font-family: inherit;
+//         margin: 1rem 1rem;
+//         width: 80%;
+//         cursor: pointer;
+//     }
+// `
 
 const Form = styled.form`
 

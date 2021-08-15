@@ -4,35 +4,13 @@ const { check, validationResult } = require('express-validator/check')
 const auth = require('../middleware/auth')
 const User = require('../models/User')
 const Blogs = require('../models/Blogs')
-const multer = require('multer');
 const path = require('path');
 const Profile = require('../models/Profile')
-const { v4: uuidv4 } = require('uuid');
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './client/build/uploads');
-    },
-    filename: function (req, file, cb) {
-        cb(null, uuidv4());
-    }
-});
-
-const fileFilter = (req, file, cb) => {
-    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    if (allowedFileTypes.includes(file.mimetype)) {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-}
-
-let upload = multer({ storage, fileFilter });
 
 // @route  POST api/blogs
 // @desc   Add new Blogs
 // @access Private
-router.post('/', [auth, upload.single('postImage'), [
+router.post('/', [auth, [
     check('text', 'Text is Required').not().isEmpty()
 ]], async (req, res) => {
     const errors = validationResult(req);
@@ -43,15 +21,13 @@ router.post('/', [auth, upload.single('postImage'), [
     try {
         const user = await User.findById(req.user.id).select('-password');
 
-        const photo = req.file.filename;
-
         const newPost = new Blogs({
             title: req.body.title,
             text: req.body.text,
             name: user.name,
             avatar: user.avatar,
             user: req.user.id,
-            postImage: photo
+            postImage: req.body.postImage
         })
 
         const post = await newPost.save()

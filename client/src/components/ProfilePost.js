@@ -112,16 +112,16 @@ const Topic = styled.div`
     }
 `
 
-const Tags = styled.div`
-    margin: 1rem 0;
-    display: flex;
+// const Tags = styled.div`
+//     margin: 1rem 0;
+//     display: flex;
 
-    & > h2 {
-        margin: 0 0.5rem;
-        font-weight: 400;
-        color: rgba(0,0,0,0.5);
-    }
-`
+//     & > h2 {
+//         margin: 0 0.5rem;
+//         font-weight: 400;
+//         color: rgba(0,0,0,0.5);
+//     }
+// `
 
 const Interact = styled.div`
     display: flex;

@@ -53,9 +53,7 @@ const Userprofile = () => {
         }
 
         fn()
-    }, [])
-
-    console.log(blogpost)
+    }, [history, dispatch])
 
     const renderIt = <Profile>
         <div className="background"></div>
@@ -74,7 +72,7 @@ const Userprofile = () => {
                 <hr />
                 <Wrapper>
                     <Work><h1>Work</h1>{apiData ? apiData.status : '--'}</Work>
-                    <Work><h1>Website</h1>{apiData ? apiData.website : '--'}</Work>
+                    <Work><h1>Website</h1>{apiData && (apiData.website ? apiData.website : '--')}</Work>
                 </Wrapper>
             </Userdata>
             <PostWrapper>

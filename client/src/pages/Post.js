@@ -58,7 +58,7 @@ const Post = () => {
             }
         }
         fetchData()
-    }, [del])
+    }, [del, id])
 
     const handleLike = async () => {
         const res = await fetch(`/api/blogs/like/${id}`, {
@@ -76,7 +76,7 @@ const Post = () => {
             setLike(data)
         } else {
             const [msg] = data.errors
-            // console.log(msg.msg)
+            console.log(msg.msg)
 
             const resUnlike = await fetch(`/api/blogs/unlike/${id}`, {
                 method: 'PUT',
@@ -145,7 +145,7 @@ const Post = () => {
                 </Left>
                 <Middle>
                     <Posts>
-                        <img src={`/uploads/${postData && postData.postImage}`} alt="" />
+                        <img src={postData && postData.postImage} alt="" />
                         <PostData>
                             <h1>{postData && postData.title} </h1>
                             <Userdetails>

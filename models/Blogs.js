@@ -59,6 +59,8 @@ const BlogSchema = mongoose.Schema({
         default: Date.now
     },
 
+}, {
+    timeStamps: true
 })
 
 module.exports = Blogs = mongoose.model('blogs', BlogSchema)

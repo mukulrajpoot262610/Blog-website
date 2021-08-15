@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom'
 import Homepage from './pages/Homepage';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
@@ -18,7 +18,7 @@ import Soon from './pages/Soon';
 function App() {
 
   const dispatch = useDispatch()
-  // const history = useHistory()
+  const history = useHistory()
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -36,16 +36,13 @@ function App() {
       if (userRes.status === 200) {
         dispatch(setCurrentUser(userData.user))
         dispatch(setAuth(true))
-        // history.push('/')
-        // alert('User Login Successful 🎉')
       }
     }
 
     fetchUser()
-  }, [])
+  }, [dispatch, history])
 
   const state = useSelector(state => state.isAuthenticated)
-  // console.log(state)
 
   return (
     <Router>

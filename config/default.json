@@ -1,5 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://mukul:mukul123@bloggerapp.eabtz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "MYNAMEISMUKULRAJPOOTIAMAMILLIONAIRE",
-  "node_env": "production"
-}
